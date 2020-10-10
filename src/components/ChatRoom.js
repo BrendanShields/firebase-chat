@@ -12,14 +12,13 @@ const ChatRoom = props => {
     const sendMessage = async (e) => {
         e.preventDefault();
 
-        const { uid, photoUrl } = props.auth.currentUser;
-
+        const { uid, photoURL } = props.auth.currentUser;
         await messageRef.add(
             {
                 text: formValue,
-                createdAt: props.firebase.firestore.FieldValue.serviceTimeStamp,
+                createdAt: Date.now(),
                 uid,
-                photoUrl
+                photoURL
             }
         )
 

@@ -8,7 +8,6 @@ import { firebaseCredentials } from './keys/firebase-keys';
 import SignIn from './components/SignIn';
 import ChatRoom from './components/ChatRoom'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp(firebaseCredentials);
 
@@ -23,11 +22,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-       
+
       </header>
 
-      <section>
-        { user ? <ChatRoom /> : <SignIn userAuth = { auth } /> }
+      <section className="content">
+        { user ? <ChatRoom firestore = { firestore } 
+          auth = { auth } /> : <SignIn userAuth = { auth } /> }
       </section>
     </div>
   );
